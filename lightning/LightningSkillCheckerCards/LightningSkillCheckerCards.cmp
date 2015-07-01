@@ -1,0 +1,25 @@
+<aura:component >
+    <aura:attribute name="item" type="Object" />
+    <div aura:id="aura-cmp">
+        <div class="cards" onclick="{!c.gotoDetail}">
+            <div class="skillInfo">
+                <div class="skillName">
+                    <ui:outputText value="{!v.item.profileSkill.Name}" />
+                </div>
+                <div class="userCount">
+                    <ui:outputText value="{!v.item.profileSkill.UserCount}" />
+                    <ui:outputText value=" users" />
+                </div>
+            </div>
+            <div class="usersImageInfo floatClear">
+                <ul>
+                    <aura:iteration items="{!v.item.profileSkillUsers}" var="profileSkillUser">
+                        <li>
+                            <img src="{!profileSkillUser.User.SmallPhotoUrl}" class="faceImage" />
+                        </li>
+                    </aura:iteration>
+                </ul>
+            </div>
+        </div>
+    </div>
+</aura:component>

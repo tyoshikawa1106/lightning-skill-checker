@@ -1,0 +1,25 @@
+<apex:page controller="SkillCheckerController" docType="html-5.0" showHeader="false" standardStylesheets="false" readOnly="true" id="page">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1" />
+    <apex:includeScript value="{!URLFOR($Resource.SkillCheckerLibrary, 'jquery/dist/jquery.min.js')}" />
+    <apex:include pageName="SkillCheckerCss" />
+
+    <div id="vf-page">
+        <apex:form id="form">
+            <!-- Search Section -->
+            <section id="searchSection">
+                <div >
+                    <apex:input type="text" value="{!searchKey}" html-placeholder="Skill Name Please.."
+                        html-maxlength="40" onkeyup="return skillSearch();" styleClass="searchBox" id="searchKey" />
+                </div>
+            </section>
+            <!-- Skill Cards Section -->
+            <section id="skillCardsSection">
+                <!-- skill list -->
+                <ul id="ul-skill-cards"></ul>
+            </section>
+        </apex:form>
+    </div>
+    <!-- javascript -->
+    <apex:include pageName="SkillCheckerScript" />
+</apex:page>

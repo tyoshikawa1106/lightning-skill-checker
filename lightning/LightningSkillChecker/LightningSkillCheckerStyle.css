@@ -1,0 +1,57 @@
+.THIS {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.THIS ul {
+    margin: 0;
+}
+.THIS ul li {
+    list-style-type: none;
+    padding: 0;
+    margin-left: -40px;
+}
+.THIS .cards {
+    border: 1px solid #dfe0e1;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.THIS .cards:hover {
+    opacity: 0.9;
+    border: 1px solid #2A94D6;
+    cursor: pointer;
+    font-weight: bold;
+}
+.THIS .skillName {
+    font-size: 28px;
+    color: #717ECD;
+}
+
+.THIS .userCount {
+    font-size: 20px;
+    color: #CF5C60;
+    padding-left: 5px;
+}
+.THIS .skillInfo {
+    border-bottom: 1px solid #dfe0e1;
+    margin-bottom: 2px;
+}
+.THIS .usersImageInfo {
+    margin-top: 6px;
+}
+.THIS .usersImageInfo ul li {
+    width: 80px;
+    float: left;
+}
+.THIS .floatClear:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.THIS .faceImage {
+    width: 35px;
+    border: 4px solid #F3AE4E;
+    border-radius: 50%;
+}

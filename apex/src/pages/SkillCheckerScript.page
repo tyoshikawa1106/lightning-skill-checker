@@ -1,0 +1,103 @@
+<apex:page >
+    <script type="text/javascript">
+        var $j =jQuery.noConflict();
+        // ulタグ要素取得
+        var $resultList = $j('#ul-skill-cards');
+    
+        function skillSearch() {
+            // 検索キー取得
+            var searchKey = $j('[id$=searchKey]').val();
+            
+            // @RemoteAction
+            SkillCheckerController.getProfileSkills(searchKey , function(results, event){
+                if(event.status) {
+                    // 初期化
+                    $resultList.children().remove();
+                    // 値セット
+                    if (results.length > 0) {
+                        results.forEach(function(result) {
+                            addRecord(result);
+                        });
+                    } else {
+                        addMessage();
+                    }
+                }
+            });
+            return false;
+        }
+        
+        // Add Record
+        function addRecord(record) {
+
+            // Skill Name
+            $skillName = $j('<div>' + record.profileSkill.Name +'</div>')
+                            .addClass('skillName');
+            // User Count
+            $userCount = $j('<div>' + record.profileSkill.UserCount + ' users' +'</div>')
+                            .addClass('userCount');
+            // skill Info
+            $skillInfo = $j('<div></div>')
+                            .addClass('skillInfo')
+                            .append($skillName)
+                            .append($userCount);
+
+            // faceImage
+            $faceImage = $j('<ul></ul>');
+            for (var i = 0; i < record.profileSkillUsers.length; i++) {
+
+                var skillUsers = record.profileSkillUsers[i];
+
+                $userImg = $j('<img></img>')
+                            .addClass('faceImage')
+                            .attr('src', skillUsers.User.SmallPhotoUrl);
+                $faceImageList = $j('<li></li>')
+                                    .append($userImg)
+
+
+                $faceImage.append($faceImageList);
+            }
+
+            // usersImageInfo
+            $usersImageInfo = $j('<div></div>')
+                                .addClass('usersImageInfo')
+                                .addClass('floatClear')
+                                .append($faceImage);
+
+            // Record Name
+            var $cardList = $j('<li></li>')
+                                .attr('id', record.profileSkill.Id)
+                                .addClass('cards')
+                                .append($skillInfo)
+                                .append($usersImageInfo);
+            // Append
+            $resultList.append($cardList);
+        }
+        
+        // Add Message
+        function addMessage() {
+            // Message
+            var $message = $j('<li>' + '※No Record...' +'</li>');
+            $message.addClass('cards');
+            // Append
+            $resultList.append($message);
+        }
+        
+        // 初期処理
+        $j(function() {
+            // Search
+            skillSearch();
+        });
+
+        // Click Event
+        $j(document).on('click', 'li', function(){
+        
+            if (typeof sforce !== 'undefined' && sforce.one) {
+                sforce.one.navigateToSObject($j(this).attr('id'));
+            } else {
+                location.href = '/' + $j(this).attr('id');
+            }
+            
+            return false;
+        });
+    </script>
+</apex:page>

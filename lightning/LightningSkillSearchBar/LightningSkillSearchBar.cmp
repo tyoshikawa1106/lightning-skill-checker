@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable">
+    <div aura:id="aura-cmp">
+        <ui:inputText class="searchBox" aura:id="searchInput"
+                      placeholder="Skill Search" keyup="{!c.searchKeyChange}" updateOn="keyup" />
+    </div>
+</aura:component>

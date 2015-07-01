@@ -1,0 +1,14 @@
+<aura:component controller="SkillCheckerController" implements="flexipage:availableForAllPageTypes,force:appHostable">
+    <aura:attribute name="records" type="Object[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:LightningSkillSearchKeyChange" action="{!c.searchKeyChange}" />
+    <div aura:id="aura-cmp">
+        <ul>
+            <aura:iteration items="{!v.records}" var="item">
+                <li>
+                    <c:LightningSkillCheckerCards item="{!item}" />
+                </li>
+            </aura:iteration>
+        </ul>
+    </div>
+</aura:component>

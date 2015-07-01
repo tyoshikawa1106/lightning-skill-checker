@@ -1,0 +1,14 @@
+.THIS {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.THIS .searchBox {
+    margin-top: 5px;
+    border: 1px solid #dfe0e1;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    padding: 5px;
+    width: 100%;
+    font-size: 22px;
+    box-sizing: border-box;
+}
